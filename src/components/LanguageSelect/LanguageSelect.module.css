@@ -1,0 +1,98 @@
+:root {
+  --border: #cccccc69;
+  --bg: #fff;
+  --text: #333;
+  --hover: #f5f5f5;
+  --active-bg: #f0f0f0;
+  --radius: 8px;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  position: relative;
+  width: 50px;
+  height: 44px;
+  user-select: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.selected {
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: bold;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.selected:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.arrow {
+  margin-left: 6px;
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.open .arrow {
+  transform: rotate(180deg);
+}
+
+/* Дропдаун */
+.dropdown {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  z-index: 10;
+  overflow: hidden;
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+.option {
+  font-size: 14px;
+  padding: 8px 0;
+  text-align: center;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.option:hover {
+  background: var(--hover);
+}
+
+.active {
+  background: var(--active-bg);
+}
+
+/* Фэйд ин анимация */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (min-width: 768px) {
+  .container{
+    width: 90px;
+  }
+}

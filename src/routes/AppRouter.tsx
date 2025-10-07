@@ -1,14 +1,19 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import AboutUs from "../pages/AboutUs";
-import Contacts from "../pages/Contacts";
+import { createBrowserRouter } from "react-router-dom";
+import AppLayout from "@/App"; 
+import HomePage from "@/pages/HomePage";
+import AboutUs from "@/pages/AboutUs";
+import Contacts from "@/pages/Contacts";
+import NotFound from "@/pages/NotFound";
 
-const router = createBrowserRouter([
-  { path: "/", element: <HomePage /> },
-  { path: "/about", element: <AboutUs /> },
-  { path: "/contacts", element: <Contacts /> }
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />, // header, footer
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "about", element: <AboutUs /> },
+      { path: "contacts", element: <Contacts /> },
+      { path: "*", element: <NotFound /> }, 
+    ],
+  },
 ]);
-
-export default function AppRouter() {
-  return <RouterProvider router={router} />;
-}

@@ -1,18 +1,16 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { StrictMode } from "react";
-import App from "./App.tsx";
-
-// 🔹 Global styles
-import "@/styles/globals.css";
-
-// 🔹 i18n (must load before rendering App)
+import { Provider } from "react-redux";
+import { store } from "@/app/store";
+import { RouterProvider } from "react-router-dom";
+import { router } from "@/routes/AppRouter"; // export router instance
 import "@/i18n";
-
-// 🔹 Redux store provider (if you use Redux Toolkit)
+import "@/styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
-      <App />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>
 );

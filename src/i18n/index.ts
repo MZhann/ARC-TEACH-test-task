@@ -7,7 +7,7 @@ import ru from "./locales/ru.json";
 import kz from "./locales/kz.json";
 
 i18n
-  .use(LanguageDetector) // 👈 detect language from localStorage/browser
+  .use(LanguageDetector) // узнать язык от браузера (чтобы при релоуде язык не слетал)
   .use(initReactI18next)
   .init({
     resources: { en: { translation: en }, ru: { translation: ru }, kz: { translation: kz } },
@@ -15,7 +15,7 @@ i18n
     interpolation: { escapeValue: false },
     detection: {
       order: ["localStorage", "navigator"],
-      caches: ["localStorage"], // 👈 saves user choice
+      caches: ["localStorage"], // сохраняет выбор юзера
     },
   });
 

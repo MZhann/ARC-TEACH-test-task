@@ -1,13 +1,13 @@
-import AppRouter from "@/routes/AppRouter";
+import { Outlet } from "react-router-dom";
 import Header from "@/components/Header/Header";
 
-export default function App() {
+export default function AppLayout() {
   return (
-      <div>
-        <Header />
-        <main>
-          <AppRouter />
-        </main>
-      </div>
+    <div className="app">
+      <Header />
+      {/* <main style={{ flex: 1 }}>
+        <Outlet /> 
+      </main> */}
+    </div>
   );
 }
