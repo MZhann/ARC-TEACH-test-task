@@ -8,3 +8,14 @@
 html{
   scrollbar-gutter: stable;
 }
+
+.mainOne {
+  background: rgba(241, 241, 241, 1);
+  padding-top: 80px;           /* desktop/tablet default */
+}
+
+@media (max-width: 768px) {
+  .mainOne {
+    padding-top: 0px;         /* mobile */
+  }
+}

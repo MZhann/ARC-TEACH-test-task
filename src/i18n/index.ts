@@ -10,13 +10,21 @@ i18n
   .use(LanguageDetector) // узнать язык от браузера (чтобы при релоуде язык не слетал)
   .use(initReactI18next)
   .init({
-    resources: { en: { translation: en }, ru: { translation: ru }, kz: { translation: kz } },
+    resources: {
+      en: { translation: en },
+      ru: { translation: ru },
+      kz: { translation: kz },
+    },
     fallbackLng: "en",
     interpolation: { escapeValue: false },
     detection: {
       order: ["localStorage", "navigator"],
       caches: ["localStorage"], // сохраняет выбор юзера
     },
+    
+    load: "languageOnly",
+    supportedLngs: ["en", "ru", "kz"],
+    nonExplicitSupportedLngs: true,
   });
 
 export default i18n;

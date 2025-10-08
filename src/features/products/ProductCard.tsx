@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToCart,
-  decreaseQuantity,
-} from "@/features/cart/cartSlice";
+import { useTranslation } from "react-i18next";
+import { addToCart, decreaseQuantity } from "@/features/cart/cartSlice";
 import { type RootState } from "@/app/store";
 import type { Product } from "@/types/product";
 import { useState } from "react";
@@ -13,6 +11,7 @@ interface Props {
 }
 
 export default function ProductCard({ product }: Props) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [expanded, setExpanded] = useState(false);
   const [added, setAdded] = useState(false);
@@ -26,7 +25,7 @@ export default function ProductCard({ product }: Props) {
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     setAdded(true);
-    setTimeout(() => setAdded(false), 1500); 
+    setTimeout(() => setAdded(false), 1500);
   };
 
   return (
@@ -111,7 +110,7 @@ export default function ProductCard({ product }: Props) {
                   <circle cx="20" cy="21" r="1"></circle>
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>
-                Добавить в корзину
+                {t("product.add_to_cart")}
               </button>
             ) : (
               // если уже добавлен в корзину -> на десктопе показать компонент с количеством товаара в корзине и кнопками
@@ -180,7 +179,7 @@ export default function ProductCard({ product }: Props) {
           className={styles.addToCartBtn}
         >
           {added ? (
-            "Добавлено"
+            t("common.added")
           ) : (
             <>
               <svg
@@ -197,7 +196,7 @@ export default function ProductCard({ product }: Props) {
                 <circle cx="20" cy="21" r="1"></circle>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
               </svg>
-              Добавить в корзину
+              {t("product.add_to_cart")}
             </>
           )}
         </button>

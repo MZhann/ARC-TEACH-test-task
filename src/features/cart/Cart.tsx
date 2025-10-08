@@ -1,16 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { clearCart, removeFromCart, updateQuantity } from "./cartSlice";
 import type { RootState } from "@/app/store";
 import styles from "./Cart.module.css";
 
 export default function Cart() {
+  const { t } = useTranslation();
   const { items, totalPrice } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
   if (items.length === 0)
-    return <p className={styles.empty}>Корзина пуста ☕</p>;
+    return <p className={styles.empty}>{t("cart.empty")} ☕</p>;
 
   const handleCheckout = () => {
     setShowModal(true);
@@ -25,12 +27,12 @@ export default function Cart() {
       {/* Корзина */}
       <div className={styles.cart}>
         <div className={styles.cartHeader}>
-          <h2>Корзина</h2>
+          <h2>{t("cart.title")}</h2>
           <button
             className={styles.clearBtn}
             onClick={() => dispatch(clearCart())}
           >
-            Очистить
+            {t("cart.clear")}
           </button>
         </div>
 
@@ -83,11 +85,15 @@ export default function Cart() {
                     </button>
 
                     <p className={styles.stockLeft}>
-                      осталось {item.amountInStore - item.quantity} шт на складе
+                      {t("common.stock_left", {
+                        count: item.amountInStore - item.quantity,
+                      })}
                     </p>
                   </div>
                 ) : (
-                  <div className={styles.outOfStock}>Нет в наличии</div>
+                  <div className={styles.outOfStock}>
+                    {t("common.out_of_stock")}
+                  </div>
                 )}
               </div>
 
@@ -103,12 +109,12 @@ export default function Cart() {
 
         <div className={styles.cartFooter}>
           <div className={styles.total}>
-            <span>Итого к оплате</span>
+            <span>{t("cart.total")}</span>
             <b>{totalPrice.toLocaleString()}₸</b>
           </div>
 
           <button onClick={handleCheckout} className={styles.checkoutBtn}>
-            Оформить заказ
+            {t("cart.checkout")}
           </button>
         </div>
       </div>
@@ -119,10 +125,10 @@ export default function Cart() {
           <div className={styles.modalBox}>
             <img
               src="/assets/gifs/done.gif"
-              alt="Успешно куплено"
+              alt={t("common.purchase_success")}
               className={styles.modalGif}
             />
-            <h3>Успешно куплено 🎉</h3>
+            <h3>{t("common.purchase_success")} 🎉</h3>
           </div>
         </div>
       )}

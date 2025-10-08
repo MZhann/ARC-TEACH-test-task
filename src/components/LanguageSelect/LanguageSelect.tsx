@@ -13,13 +13,18 @@ export default function LanguageSelect() {
 
   const langs = ["en", "ru", "kz"];
 
+  // Extract just the language code from the full locale (e.g., "ru-ru" -> "ru")
+  const getCurrentLanguage = () => {
+    return i18n.language.split("-")[0];
+  };
+
   return (
     <div className={styles.container}>
       <div
         className={`${styles.selected} ${open ? styles.open : ""}`}
         onClick={() => setOpen(!open)}
       >
-        {i18n.language.toUpperCase()}
+        {getCurrentLanguage().toUpperCase()}
         <span className={styles.arrow}>{open ? "˄" : "˅"}</span>
       </div>
 
@@ -30,7 +35,7 @@ export default function LanguageSelect() {
             <div
               key={lang}
               className={`${styles.option} ${
-                i18n.language === lang ? styles.active : ""
+                getCurrentLanguage() === lang ? styles.active : ""
               }`}
               onClick={() => changeLanguage(lang)}
             >

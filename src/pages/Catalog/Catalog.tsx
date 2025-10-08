@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useGetProductsQuery } from "@/api/productsApi";
 import ProductCard from "@/features/products/ProductCard";
 import Cart from "@/features/cart/Cart";
 import styles from "./Catalog.module.css";
 
 export default function Catalog() {
+  const { t } = useTranslation();
   const { data, isLoading } = useGetProductsQuery();
   const [mobileCartOpen, setMobileCartOpen] = useState(false);
 
@@ -13,12 +15,12 @@ export default function Catalog() {
       <div className={styles.loading}>
         <img
           src="/assets/gifs/loading.gif"
-          alt="loading"
-          style={{width: "150px", height: "150px"}}
+          alt={t("common.loading")}
+          style={{ width: "150px", height: "150px" }}
         />
       </div>
     );
-  if (!data) return <p>No products found</p>;
+  if (!data) return <p>{t("catalog.no_products")}</p>;
 
   return (
     <div className={styles.catalog}>

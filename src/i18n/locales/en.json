@@ -1,6 +1,280 @@
 {
-  "welcome": "Welcome to Coffee Shop",
+  "welcome": "Welcome to COFFEINO",
   "add_to_cart": "Add to cart",
   "price": "Price",
-  "language": "Language"
+  "language": "Language",
+
+  "navigation": {
+    "home": "Home",
+    "catalog": "Catalog",
+    "tracking": "Tracking order",
+    "about": "About Us",
+    "contacts": "Contacts"
+  },
+
+  "homepage": {
+    "hero": {
+      "title": "Welcome to the world of",
+      "subtitle": "Discover the unparalleled taste of premium coffee from the best corners of the world",
+      "catalog_button": "Go to catalog",
+      "about_button": "About us"
+    },
+    "features": {
+      "title": "Why choose us",
+      "varieties": {
+        "title": "Best varieties",
+        "description": "We select only premium coffee varieties from different countries around the world"
+      },
+      "delivery": {
+        "title": "Fast delivery",
+        "description": "We deliver throughout Kazakhstan and CIS countries in the shortest time"
+      },
+      "quality": {
+        "title": "Quality",
+        "description": "We guarantee the freshness and quality of every bean"
+      },
+      "gifts": {
+        "title": "Gifts",
+        "description": "Special offers and gifts for our customers"
+      }
+    },
+    "showcase": {
+      "title": "Our hits",
+      "ethiopian": {
+        "name": "Ethiopian Yirgacheffe",
+        "description": "Bright, fruity taste with notes of citrus and flowers",
+        "price": "from 2,500 ₸"
+      },
+      "colombian": {
+        "name": "Colombian Supremo",
+        "description": "Balanced taste with chocolate notes",
+        "price": "from 2,200 ₸"
+      },
+      "jamaican": {
+        "name": "Jamaican Blue Mountain",
+        "description": "Soft, elegant taste without bitterness",
+        "price": "from 4,500 ₸"
+      },
+      "view_all": "View all varieties"
+    },
+    "cta": {
+      "title": "Ready to start your coffee journey?",
+      "subtitle": "Join thousands of quality coffee lovers",
+      "button": "Choose coffee"
+    }
+  },
+
+  "about": {
+    "hero": {
+      "title": "About us",
+      "subtitle": "We are a team of passionate coffee lovers who have dedicated their lives to finding and delivering the best varieties from around the world"
+    },
+    "story": {
+      "title": "Our story",
+      "paragraph1": "COFFEINO was born from a simple passion for quality coffee. Starting as a small family business in 2015, we have grown into a leading supplier of premium coffee in Kazakhstan and CIS countries.",
+      "paragraph2": "Our mission is to open up unsurpassed tastes and aromas for every coffee lover that are born in the most remote corners of our planet."
+    },
+    "values": {
+      "title": "Our values",
+      "quality": {
+        "title": "Quality",
+        "description": "We carefully select each coffee variety, working only with verified suppliers and farmers"
+      },
+      "honesty": {
+        "title": "Honesty",
+        "description": "Transparency in work, honest prices and openness to dialogue with our customers"
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "We support environmentally responsible production and fair trade"
+      },
+      "passion": {
+        "title": "Passion",
+        "description": "Our love for coffee inspires us every day to look for new unique tastes"
+      }
+    },
+    "team": {
+      "title": "Our team",
+      "alexey": {
+        "name": "Alexey Petrov",
+        "role": "Founder and CEO",
+        "description": "15 years of experience in the coffee industry, traveler and coffee connoisseur"
+      },
+      "maria": {
+        "name": "Maria Kozlova",
+        "role": "Chief Taster",
+        "description": "Certified Q-grader, expert in coffee flavor profiles"
+      },
+      "dmitry": {
+        "name": "Dmitry Smirnov",
+        "role": "Development Director",
+        "description": "Responsible for expanding the range and finding new suppliers"
+      }
+    },
+    "stats": {
+      "varieties": "Coffee varieties",
+      "countries": "Supplier countries",
+      "customers": "Satisfied customers",
+      "years": "Years on the market"
+    },
+    "cta": {
+      "title": "Ready to try our coffee?",
+      "subtitle": "Join the community of quality coffee lovers",
+      "button": "Go to catalog"
+    }
+  },
+
+  "contacts": {
+    "hero": {
+      "title": "Contact us",
+      "subtitle": "Do you have questions? We are always happy to help and answer any of your questions"
+    },
+    "info": {
+      "title": "Contact information",
+      "address": {
+        "title": "Address",
+        "value": "Makaataeva 237<br />Almaty, Kazakhstan"
+      },
+      "phone": {
+        "title": "Phone",
+        "value": "+7 (747) 345 56 87"
+      },
+      "email": {
+        "title": "Email",
+        "value": "coffee@shop.kz"
+      },
+      "hours": {
+        "title": "Working hours",
+        "value": "Mon-Sun: 9:00 - 20:00"
+      },
+      "social": {
+        "title": "We are on social networks",
+        "whatsapp": "WhatsApp",
+        "instagram": "Instagram"
+      }
+    },
+    "form": {
+      "title": "Write to us",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "submit": "Send message",
+      "success": "Thank you for your message! We will contact you soon."
+    },
+    "map": {
+      "title": "How to find us",
+      "placeholder": "Map with our location",
+      "address": "Makaataeva 237, Almaty"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "delivery": {
+        "question": "How long does delivery take?",
+        "answer": "Delivery to Almaty is carried out within 1-2 days, throughout Kazakhstan - 3-5 days, to CIS countries - 5-10 days."
+      },
+      "return": {
+        "question": "Can I return the product?",
+        "answer": "Yes, we accept returns within 14 days of purchase while maintaining the product appearance."
+      },
+      "discounts": {
+        "question": "Are there discounts for regular customers?",
+        "answer": "Yes, we have a loyalty system with cumulative discounts and special offers."
+      },
+      "storage": {
+        "question": "How to store coffee?",
+        "answer": "Store coffee in a cool, dry place in an airtight package. Avoid direct sunlight."
+      }
+    }
+  },
+
+  "footer": {
+    "delivery": {
+      "title": "Delivery:",
+      "description": "We ship orders to Kazakhstan and CIS countries"
+    },
+    "schedule": {
+      "title": "Working hours"
+    },
+    "phone": {
+      "title": "Phone number"
+    },
+    "email": {
+      "title": "Email"
+    },
+    "social": {
+      "title": "Our social networks"
+    },
+    "address": {
+      "title": "Address:"
+    },
+    "route": {
+      "title": "Build route:"
+    },
+    "legal": {
+      "offer": "Public offer",
+      "privacy": "Privacy Policy"
+    },
+    "copyright": "2025, © All rights reserved",
+    "developed": "Developed with"
+  },
+
+  "catalog": {
+    "title": "Coffee Catalog",
+    "loading": "Loading...",
+    "no_products": "No products found",
+    "cart": {
+      "title": "Cart",
+      "empty": "Your cart is empty",
+      "total": "Total:",
+      "checkout": "Checkout",
+      "clear": "Clear cart"
+    }
+  },
+
+  "product": {
+    "add_to_cart": "Add to cart",
+    "price": "Price",
+    "description": "Description",
+    "origin": "Origin",
+    "roast": "Roast level",
+    "weight": "Weight"
+  },
+
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "item": {
+      "remove": "Remove",
+      "quantity": "Quantity"
+    },
+    "total": "Total:",
+    "checkout": "Proceed to checkout",
+    "continue": "Continue shopping",
+    "clear": "Clear cart"
+  },
+
+  "not_found": {
+    "title": "Page not found",
+    "description": "Unfortunately, the requested page does not exist or has been moved.",
+    "home_button": "Return to home",
+    "catalog_button": "Go to catalog",
+    "illustration": "Oops! It seems the coffee spilled..."
+  },
+
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "added": "Added",
+    "stock_left": "{{count}} left in stock",
+    "out_of_stock": "Out of stock",
+    "purchase_success": "Successfully purchased"
+  }
 }
