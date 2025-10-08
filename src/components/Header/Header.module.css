@@ -112,13 +112,62 @@
   outline: none;
 }
 
+/* Cart styles */
+.cartOverlay {
+  position: fixed; /* 👈 fixed, not absolute */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  z-index: 9999; /* 👈 highest layer */
+}
+
+.cartSidebar {
+  width: 90%;
+  max-width: 400px;
+  background: #fff;
+  height: 100%;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease forwards;
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.fadeIn {
+  animation: fadeInBg 0.3s ease forwards;
+}
+
+@keyframes fadeInBg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* ========= Планшет/Десктоп (>= 768пикселей) ========= */
 @media (min-width: 768px) {
   .header {
     grid-template-columns: auto 1fr auto;
     padding: 10px 24px;
+    max-width: 1440px;
+    margin: 0 auto;
   }
-
+  
   /* спрятать штуки мобилки */
   .leftMobile,
   .rightMobile {
@@ -210,7 +259,6 @@
     transform: translateY(-8px);
   }
 }
-
 
 .sheetCard {
   width: min(92%, 314px);

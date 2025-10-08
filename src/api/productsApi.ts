@@ -33,6 +33,7 @@ export const productsApi = createApi({
             originCountry: "Unknown",
             madeIn: "Unknown",
             contains: "100% arabica",
+            ingredients: ["water", "coffee beans"]
           },
         }));
       },

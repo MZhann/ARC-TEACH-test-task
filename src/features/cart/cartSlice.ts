@@ -9,11 +9,27 @@ interface CartState {
   items: CartItem[];
   totalPrice: number;
 }
+const CART_KEY = "coffeino_cart";
 
-const initialState: CartState = {
-  items: [],
-  totalPrice: 0,
+const loadCart = (): CartState => {
+  try {
+    const saved = localStorage.getItem(CART_KEY);
+    return saved ? JSON.parse(saved) : { items: [], totalPrice: 0 };
+  } catch {
+    return { items: [], totalPrice: 0 };
+  }
 };
+
+const saveCart = (state: CartState) => {
+  try {
+    localStorage.setItem(CART_KEY, JSON.stringify(state));
+  } catch {
+  }
+};
+const initialState: CartState = loadCart();
+
+const calcTotal = (items: CartItem[]) =>
+  items.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -26,18 +42,34 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...action.payload, quantity: 1 });
       }
-      state.totalPrice = state.items.reduce(
-        (acc, item) => acc + item.price * item.quantity,
-        0
-      );
+      state.totalPrice = calcTotal(state.items);
+      saveCart(state);
     },
+
     removeFromCart(state, action: PayloadAction<string>) {
       state.items = state.items.filter((i) => i.id !== action.payload);
-      state.totalPrice = state.items.reduce(
-        (acc, item) => acc + item.price * item.quantity,
-        0
-      );
+      state.totalPrice = calcTotal(state.items);
+      saveCart(state);
     },
+
+    increaseQuantity(state, action: PayloadAction<string>) {
+      const item = state.items.find((i) => i.id === action.payload);
+      if (item && item.quantity < item.amountInStore) item.quantity += 1;
+      state.totalPrice = calcTotal(state.items);
+      saveCart(state);
+    },
+
+    decreaseQuantity(state, action: PayloadAction<string>) {
+      const item = state.items.find((i) => i.id === action.payload);
+      if (item) {
+        item.quantity -= 1;
+        if (item.quantity <= 0)
+          state.items = state.items.filter((i) => i.id !== action.payload);
+      }
+      state.totalPrice = calcTotal(state.items);
+      saveCart(state);
+    },
+
     updateQuantity(
       state,
       action: PayloadAction<{ id: string; quantity: number }>
@@ -49,18 +81,25 @@ const cartSlice = createSlice({
           item.amountInStore
         );
       }
-      state.totalPrice = state.items.reduce(
-        (acc, item) => acc + item.price * item.quantity,
-        0
-      );
+      state.totalPrice = calcTotal(state.items);
+      saveCart(state);
     },
+
     clearCart(state) {
       state.items = [];
       state.totalPrice = 0;
+      saveCart(state);
     },
   },
 });
 
-export const { addToCart, removeFromCart, updateQuantity, clearCart } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  updateQuantity,
+  clearCart,
+} = cartSlice.actions;
+
 export default cartSlice.reducer;

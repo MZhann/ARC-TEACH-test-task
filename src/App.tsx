@@ -5,9 +5,9 @@ export default function AppLayout() {
   return (
     <div className="app">
       <Header />
-      {/* <main style={{ flex: 1 }}>
+      <main style={{backgroundColor: "rgba(241, 241, 241, 1)" }}> 
         <Outlet /> 
-      </main> */}
+      </main>
     </div>
   );
 }

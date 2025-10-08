@@ -2,11 +2,12 @@ import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import LanguageSelect from "@/components/LanguageSelect/LanguageSelect";
 import styles from "./Header.module.css";
+import Cart from "@/features/cart/Cart";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
-
+  const [mobileCartOpen, setMobileCartOpen] = useState(false);
 
   const openMenu = () => {
     setClosing(false);
@@ -20,7 +21,6 @@ export default function Header() {
     setTimeout(() => setOpen(false), 200);
   };
 
-
   return (
     <>
       <header className={styles.header}>
@@ -29,7 +29,7 @@ export default function Header() {
           <button
             className={`${styles.pill} ${styles.iconBtn}`}
             aria-label="Open menu"
-            onClick={openMenu} 
+            onClick={openMenu}
           >
             {/* бургер баттн */}
             <span className={styles.burgerIcon} />
@@ -39,15 +39,21 @@ export default function Header() {
         </div>
 
         {/* лого в центре (мобилка) / лого слева (десктоп) */}
-        <Link className={styles.logo} to='/'>COFFEINO</Link>
+        <Link className={styles.logo} to="/">
+          COFFEINO
+        </Link>
 
         {/* мобилка справа */}
         <div className={styles.rightMobile}>
-          <Link to="/catalog" className={`${styles.pill} ${styles.catalogBtn}`}> Каталог </Link>
+          <Link to="/" className={`${styles.pill} ${styles.catalogBtn}`}>
+            {" "}
+            Каталог{" "}
+          </Link>
 
           <button
             className={`${styles.pill} ${styles.iconBtn}`}
             aria-label="Cart"
+            onClick={() => setMobileCartOpen(true)}
           >
             {/* иконка карзины */}
             <svg
@@ -80,11 +86,51 @@ export default function Header() {
 
         {/* нав в центре (десктоп) */}
         <nav className={styles.navDesktop} aria-label="Main">
-          <NavLink to="/" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}> Главная </NavLink>
-          <NavLink to="/catalog" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}> Каталог </NavLink>
-          <NavLink to="/order-search" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}> Поиск заказа </NavLink>
-          <NavLink to="/about" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}> О нас </NavLink>
-          <NavLink to="/contacts" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}> Контакты </NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link
+            }
+          >
+            {" "}
+            Главная{" "}
+          </NavLink>
+          <NavLink
+            to="/catalog"
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link
+            }
+          >
+            {" "}
+            Каталог{" "}
+          </NavLink>
+          <NavLink
+            to="/order-search"
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link
+            }
+          >
+            {" "}
+            Поиск заказа{" "}
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link
+            }
+          >
+            {" "}
+            О нас{" "}
+          </NavLink>
+          <NavLink
+            to="/contacts"
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link
+            }
+          >
+            {" "}
+            Контакты{" "}
+          </NavLink>
         </nav>
 
         {/* на десктопе язык справа */}
@@ -92,7 +138,27 @@ export default function Header() {
           <LanguageSelect />
         </div>
       </header>
-
+      {mobileCartOpen && (
+        <div
+          className={`${styles.cartOverlay} ${styles.fadeIn}`}
+          onClick={() => setMobileCartOpen(false)}
+        >
+          <div
+            className={styles.cartSidebar}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={styles.cartHeader}>
+              <button
+                className={styles.closeBtn}
+                onClick={() => setMobileCartOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+            <Cart />
+          </div>
+        </div>
+      )}
       {/* мобилка бургер баттон с анимацией фэйд ин (мобилка) */}
       {open && (
         <div
@@ -115,10 +181,62 @@ export default function Header() {
             </div>
 
             <ul className={styles.sheetList}>
-              <li><NavLink to="/" onClick={closeMenu} className={({ isActive }) => isActive ? `${styles.sheetLink} ${styles.sheetActive}` : styles.sheetLink}> Главная </NavLink></li>
-              <li><NavLink to="/about" onClick={closeMenu} className={({ isActive }) => isActive ? `${styles.sheetLink} ${styles.sheetActive}` : styles.sheetLink}> О нас </NavLink></li>
-              <li><NavLink to="/order-search" onClick={closeMenu} className={({ isActive }) => isActive ? `${styles.sheetLink} ${styles.sheetActive}` : styles.sheetLink}> Поиск заказа </NavLink></li>
-              <li><NavLink to="/contacts" onClick={closeMenu} className={({ isActive }) => isActive ? `${styles.sheetLink} ${styles.sheetActive}` : styles.sheetLink}> Контакты </NavLink></li>
+              <li>
+                <NavLink
+                  to="/"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.sheetLink} ${styles.sheetActive}`
+                      : styles.sheetLink
+                  }
+                >
+                  {" "}
+                  Главная{" "}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/about"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.sheetLink} ${styles.sheetActive}`
+                      : styles.sheetLink
+                  }
+                >
+                  {" "}
+                  О нас{" "}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/order-search"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.sheetLink} ${styles.sheetActive}`
+                      : styles.sheetLink
+                  }
+                >
+                  {" "}
+                  Поиск заказа{" "}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contacts"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.sheetLink} ${styles.sheetActive}`
+                      : styles.sheetLink
+                  }
+                >
+                  {" "}
+                  Контакты{" "}
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>
