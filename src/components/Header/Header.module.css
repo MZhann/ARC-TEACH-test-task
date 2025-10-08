@@ -10,6 +10,11 @@
    Desktop: [logo(left)] [nav(center)] [lang(right)]
 */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #eee;
